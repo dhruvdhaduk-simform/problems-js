@@ -1,4 +1,4 @@
-const isAnagram = require("../isAnagram.js");
+const isAnagram = require("../src/isAnagram.js");
 
 test("Test isAngram", () => {
     expect(isAnagram("listen", "silent")).toBe(true);

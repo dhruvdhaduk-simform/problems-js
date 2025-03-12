@@ -1,4 +1,4 @@
-const camelCase = require("../camelCase.js");
+const camelCase = require("../src/camelCase.js");
 
 test("Test camelCase function", () => {
     expect(camelCase("hello world")).toBe("helloWorld");
