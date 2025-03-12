@@ -1,0 +1,13 @@
+{
+  "name": "live-coding",
+  "version": "1.0.0",
+  "description": "This contains all the live coding problem performed during DSUs.",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Dhruv Dhaduk",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
