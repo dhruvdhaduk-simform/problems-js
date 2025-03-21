@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+            html {
+                background-color: black;
+                color: white;
+            }
+
+            button {
+                background-color: white;
+                color: black;
+                border: none;
+                font-size: 1.25rem;
+                font-weight: bold;
+                padding: 0.5rem;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                user-select: none;
+            }
+            button:hover {
+                opacity: 0.9;
+            }
+            button:active {
+                opacity: 0.8;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div id="container" class="container my-container">
+        
+            <p id="first-child-p" class="my-first-child-p">
+                <button id="first-btn" class="my-first-btn"></button>
+            </p>
+        
+            <p id="second-child-p" id="my-second-child-p">
+                <a href="#" id="first-link" class="my-first-link">
+                    <img src="" alt="" id="first-img" class="my-first-img">
+                </a>
+            </p>
+        
+            <div id="third-child-div" class="my-third-child-div">
+                <p id="first-p" class="my-first-p"></p>
+                <div id="first-div" class="my-first-div">
+                    <p id="second-p" class="my-second-p">
+                        <button id="second-btn" class="my-second-btn"></button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function toSelector(ele) {
+                return ele.tagName.toLowerCase() + "#" + ele.id + "." + ele.classList.value.split(" ").join(".");
+            }
+
+            function flattenDOM(ele) {
+                const flat = [];
+
+                if (ele instanceof HTMLElement) {
+                    flat.push(toSelector(ele));
+                    flat.push(...flattenDOM(ele.children));
+                }
+                else if (ele instanceof HTMLCollection || ele.length) {
+                    for (const x of ele) {
+                        flat.push(toSelector(x));
+                    }
+                    
+                    const children = [];
+                    for (const x of ele) {
+                        children.push(...x.children);
+                    }
+
+                    flat.push(...flattenDOM(children));
+                }
+
+                return flat;
+            }
+
+            const flatted = flattenDOM(document.querySelector("#container"));
+            for (const x of flatted) {
+                console.log(x);
+            }
+
+        </script>
+
+    </body>
+</html>
